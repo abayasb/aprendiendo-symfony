@@ -3,10 +3,18 @@ index: #nombre o jusfijo de la ruta
     path: /inicio
     controller: App\Controller\HomeController::index #indicar al controllador y al metodo 
 
-
+##RECORDATORIO NO PONER COMAR AL FINAL PORQUE LE DA ANCIEDAD
 animales: 
       #el " ? "  es para que el parametro pueda llegar opcional
-    path: /animales/{nombre?}
+    path: /animales/{nombre?}/{edad?}
     controller: App\Controller\HomeController::animal
     #default hace que tenga un parametro por defecto
-    defaults: {nombre: 'Oso prado'};
+    defaults: {nombre: 'Oso prado'}
+    #methods que metodo va utilizar
+    methods: [POST,GET]
+
+    #restrincion de los que se le pasa por la url
+    #se le puede ingresar una expresion regular 
+    requirements: 
+        nombre: '[a-zA-Z]+'
+        edad: '[0-9]+'

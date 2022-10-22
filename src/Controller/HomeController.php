@@ -19,14 +19,15 @@ class HomeController extends AbstractController
         ]);
     }
 
-    public function animal($nombre): Response
+    public function animal($nombre,$edad): Response
     {
         $text = "Controlador de animales";
         return $this->render(
             'home/animal.html.twig',
             [
                 'text' => $text,
-                'nombre' => $nombre
+                'nombre' => $nombre,
+                'edad' => $edad
             ]
         );
     }
