@@ -31,4 +31,9 @@ class HomeController extends AbstractController
             ]
         );
     }
+
+    public function redireccion()
+    {
+        return $this->redirectToRoute('index',array(),301);
+    }
 }
