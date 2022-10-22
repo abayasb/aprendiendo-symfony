@@ -1,3 +1,12 @@
-#index:
-#    path: /
-#    controller: App\Controller\DefaultController::index
+
+index: #nombre o jusfijo de la ruta
+    path: /inicio
+    controller: App\Controller\HomeController::index #indicar al controllador y al metodo 
+
+
+animales: 
+      #el " ? "  es para que el parametro pueda llegar opcional
+    path: /animales/{nombre?}
+    controller: App\Controller\HomeController::animal
+    #default hace que tenga un parametro por defecto
+    defaults: {nombre: 'Oso prado'};
