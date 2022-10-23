@@ -1,10 +1,83 @@
  {# tenemos que extender a la vista principal #}
-{% extends 'base.html.twig' %}
+{% extends 'master.html.twig' %}
 
-{% block title %}Hello HomeController!{% endblock %}
+{% block title %} animales {% endblock %}
 
-{% block body %}
+{% block cabezera %}
+    <h1>Animales</h1>
+{% endblock %}
+
+
+{% block content %}
     <h1>{{text}}</h1>
+     <hr>
     <h2>El nombre del animal es : {{nombre}}</h2>
     <h2>Suele vivir {{edad}}</h2>
+    <hr>
+    {# trabajar con el array #}
+    <h2>El nombre en el array del animal es : {{animales[0]}}</h2>
+     <hr>
+
+    {# trabajar con el array asociativos #}
+    {# su puede contatenar de la siguiente manera {{perro.raza ~ ' - ' ~ perro.tamaño}} #}
+    
+     <h2>La raza del perro es : {{perro.raza}}</h2>
+     <h2>Tiene : {{perro.edad}} años</h2>
+     <h2>EL tamaño del perro es {{perro.tamaño}}</h2>
+    <hr>
+
+     {# condicionales #}
+     {# if #}
+    {% set raza = perro.raza %}
+    {% if perro.raza == 'pastor aleman' %}
+        <h3>Ejectivamente es un {{perro.raza}}</h3>
+    {% else %}
+        <h3>Ejectivamente no {{raza}}</h3>
+    {% endif %}
+    <hr>
+
+    {# Bucles utilizar | como un punto para el length #}
+    {% if animales|length >= 0 %}
+        <h1> Bucles </h1>
+        <ul>
+        {% for animal in animales %}
+            <li>{{animal}}</li>
+        {% endfor %}
+        </ul>
+    {% endif %}
+
+    {# starts con que quiere que este el arreglo
+        starts con que comienza
+        ends con que acaba
+    #}
+
+    {% if perro.raza starts with 'p' %}
+        <h2>Empezo por p : {{perro.raza}}</h2>
+    {% endif %}
+    <hr>
+    {# funciones predifinas #}
+    {# min sacar el valor minimo de un array #}
+    <h1>funciones predifinas</h1>
+    <h3>Funcion min: saca el minino de un array</h3>
+    <h3>[10,3,1,4,200,-1]</h3>
+    {{min([10,3,1,4,200,-1])}}
+
+    <h3>Funcion max: saca el valor mayor de un array</h3>
+    <h3>[10,3,1,4,200,-1]</h3>
+    {{max([10,3,1,4,200,-1])}}
+
+    <h3>Radom:</h3>
+    <h3>Funcion random: saca el valor aleatorio de un array</h3>
+    <h3>['perro','tigre','gato']</h3>
+    {{random(animales)}}
+    <hr>
+
+    <h3>Range:</h3>
+    {# parametros del range range(valor inicial, valor final, salto ) #}
+    {% for indice in range(0,10) %}
+        <p> {{indice}}</p>
+    {% endfor %}
+
+    {# filtros #}
+    
  {% endblock  %}

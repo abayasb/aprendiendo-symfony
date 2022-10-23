@@ -22,12 +22,20 @@ class HomeController extends AbstractController
     public function animal($nombre,$edad): Response
     {
         $text = "Controlador de animales";
+        $animales=['perro','tigre','gato'];
+        $perro = [
+            'raza' => 'pastor aleman',
+            'edad' => 19,
+            'tamaño' => 'grande'
+        ];
         return $this->render(
             'home/animal.html.twig',
             [
                 'text' => $text,
                 'nombre' => $nombre,
-                'edad' => $edad
+                'edad' => $edad,
+                'animales' =>$animales,
+                'perro' => $perro
             ]
         );
     }
